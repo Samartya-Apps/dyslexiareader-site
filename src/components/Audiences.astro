@@ -1,0 +1,72 @@
+---
+// Audiences.astro
+---
+<section class="audiences section">
+  <div class="container">
+    <h2 class="text-center section-title">Built for the people in a child's corner.</h2>
+    
+    <div class="audience-grid">
+      <div class="card audience-card">
+        <h3>For Teachers &amp; Reading Specialists</h3>
+        <p>
+          Upload your classroom materials once. Share prepared assignments with your entire class. Each student reads at their own pace with the supports they need. Works alongside your existing reading intervention programs.
+        </p>
+        <a href="https://samartya.com/for-schools" class="audience-link" target="_blank" rel="noopener noreferrer">See how schools use Dyslexia Reader &rarr;</a>
+      </div>
+
+      <div class="card audience-card">
+        <h3>For Parents &amp; Families</h3>
+        <p>
+          Give your child a tool they can use at home, on their own, without frustration. Scan tonight's homework. Upload next week's assigned reading. Let them practice independently — with help always one tap away.
+        </p>
+      </div>
+
+      <div class="card audience-card">
+        <h3>For Therapists &amp; Tutors</h3>
+        <p>
+          Use Dyslexia Reader in remediation sessions. The app's supports mirror evidence-based strategies you already use — syllabification, onset/rime, phonological awareness. It reinforces your work between sessions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-8);
+  }
+
+  .audience-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .audience-card h3 {
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .audience-card p {
+    flex-grow: 1;
+    color: var(--color-text-muted);
+  }
+
+  .audience-link {
+    display: inline-block;
+    margin-top: var(--spacing-4);
+    font-weight: 600;
+  }
+
+  @media (max-width: 992px) {
+    .audience-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

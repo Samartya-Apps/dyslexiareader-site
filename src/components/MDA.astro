@@ -1,0 +1,73 @@
+---
+// MDA.astro
+---
+<section class="mda section section-alt">
+  <div class="container mda-grid">
+    <div class="mda-content">
+      <h2>20+ years of dyslexia research, in your child's hands.</h2>
+      <p>
+        Dyslexia Reader was co-developed with the Madras Dyslexia Association (MDA), a non-profit that has been working with children with dyslexia since 1992. MDA has trained thousands of teachers, supported tens of thousands of children, and developed evidence-based reading strategies refined over decades of clinical practice.
+      </p>
+      <p>
+        Those strategies — the ones that actually work in real classrooms and resource rooms — are built directly into Dyslexia Reader. This isn't technology guessing at what might help. It's technology encoding what educators have proven works.
+      </p>
+      <a href="https://mdachennai.com" class="mda-link" target="_blank" rel="noopener noreferrer">Learn more about MDA &rarr;</a>
+    </div>
+    <div class="mda-logo-container">
+      <img src="/img/mda-logo.png" alt="Madras Dyslexia Association Logo" class="mda-logo" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .mda-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+
+  h2 {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .mda-content p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .mda-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .mda-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-bg-surface);
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .mda-logo {
+    max-width: 200px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .mda-grid {
+      grid-template-columns: 1fr;
+    }
+    .mda-logo-container {
+      order: -1;
+      padding: var(--spacing-6);
+    }
+    .mda-logo {
+      max-width: 150px;
+    }
+  }
+</style>

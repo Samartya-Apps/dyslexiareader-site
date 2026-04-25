@@ -1,0 +1,115 @@
+---
+// Header.astro
+---
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">
+      <img src="/img/dyslexia-reader-icon.png" alt="Dyslexia Reader Logo" width="40" height="40" />
+      <span class="logo-text">Dyslexia Reader</span>
+    </div>
+    <nav class="nav">
+      <!-- To be shown once web version is live -->
+      <!-- <a href="https://app.dyslexiareader.com" class="nav-link hide-mobile">Open App ↗</a> -->
+      
+      <div class="dropdown">
+        <button class="nav-link dropdown-toggle">Download ▾</button>
+        <div class="dropdown-menu">
+          <a href="https://apps.apple.com/us/app/dyslexia-reader-by-mda/id1443891619" class="dropdown-item" target="_blank" rel="noopener noreferrer">iOS</a>
+          <a href="https://play.google.com/store/apps/details?id=com.avaz.readerapp" class="dropdown-item" target="_blank" rel="noopener noreferrer">Android</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: var(--spacing-4) 0;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+  }
+
+  .logo-text {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+  }
+
+  .nav-link {
+    color: var(--color-text-main);
+    font-weight: 500;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: var(--font-family-body);
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    min-width: 150px;
+    padding: var(--spacing-2) 0;
+    margin-top: var(--spacing-2);
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: var(--spacing-2) var(--spacing-4);
+    color: var(--color-text-main);
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .hide-mobile {
+      display: none;
+    }
+  }
+</style>

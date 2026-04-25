@@ -1,0 +1,96 @@
+---
+// Solution.astro
+---
+<section class="solution section">
+  <div class="container">
+    <h2 class="text-center section-title">Dyslexia Reader makes any reading material accessible.</h2>
+    
+    <div class="solution-grid">
+      <div class="solution-card">
+        <div class="icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+            <circle cx="12" cy="13" r="3"></circle>
+          </svg>
+        </div>
+        <h3>Bring in any text.</h3>
+        <p>Scan a physical page with your camera. Upload a PDF. Import a classroom worksheet. Dyslexia Reader works with your child's actual school materials — not a separate reading library they'll never open.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
+        </div>
+        <h3>Get support on every word.</h3>
+        <p>Stuck on a word? Tap it. Hear it pronounced. See it split into syllables. Explore its onset and rime. Find words that rhyme with it. Look up its meaning. Every word becomes solvable.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <h3>Read independently.</h3>
+        <p>Choose how to read: listen to the whole page read aloud, follow along sentence by sentence, or read independently with on-demand help. The child controls their experience. Confidence grows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    margin-bottom: var(--spacing-16);
+  }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-8);
+  }
+
+  .solution-card {
+    background: var(--color-bg-surface);
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-base);
+  }
+  
+  .solution-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .solution-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .solution-card p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .solution-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

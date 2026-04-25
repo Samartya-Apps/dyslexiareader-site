@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import Solution from '../components/Solution.astro';
+import Demo from '../components/Demo.astro';
+import Features from '../components/Features.astro';
+import Differentiator from '../components/Differentiator.astro';
+import MDA from '../components/MDA.astro';
+import Audiences from '../components/Audiences.astro';
+import Waitlist from '../components/Waitlist.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout 
+  title="Dyslexia Reader — Make Any Reading Material Accessible | Reading App for Dyslexia" 
+  description="Scan a page or upload a PDF. Dyslexia Reader adds text-to-speech, syllabification, onset/rime, and more — turning classroom materials into accessible reading experiences. Built with 20+ years of dyslexia research. Free to try."
+>
+  <Header />
+  
+  <main>
+    <Hero />
+    <Problem />
+    <Solution />
+    <Demo />
+    <Features />
+    <Differentiator />
+    <MDA />
+    <Audiences />
+    <Waitlist />
+    <Testimonials />
+    <Pricing />
+    
+    <!-- Final CTA Section (Section 12 in Spec) -->
+    <section id="download" class="final-cta section section-light text-center">
+      <div class="container">
+        <h2>Start reading with confidence today.</h2>
+        <div class="cta-actions">
+          <a href="https://apps.apple.com/us/app/dyslexia-reader-by-mda/id1443891619" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on iOS</a>
+          <a href="https://play.google.com/store/apps/details?id=com.avaz.readerapp" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on Android</a>
+          <a href="#waitlist" class="btn btn-outline">Join the Web Waitlist</a>
+        </div>
+        <p class="micro-text">Free 14-day trial on all platforms. No credit card required.</p>
+      </div>
+    </section>
+
+    <FAQ />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .final-cta {
+    padding: var(--spacing-16) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .final-cta h2 {
+    margin-bottom: var(--spacing-8);
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .micro-text {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>

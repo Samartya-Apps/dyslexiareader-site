@@ -1,0 +1,277 @@
+---
+// Pricing.astro
+---
+<section class="pricing section section-light">
+  <div class="container pricing-container">
+    <div class="pricing-header text-center">
+      <h2>Free to try. Affordable to keep.</h2>
+      <p class="pricing-subtitle">Dyslexia Reader is free to download with a full 14-day trial. After the trial, choose the plan that works for you.</p>
+      
+      <div class="currency-toggle">
+        <span class="toggle-label" id="label-usd">USD ($)</span>
+        <label class="switch">
+          <input type="checkbox" id="currency-switch">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label" id="label-inr">INR (₹)</span>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Monthly Plan -->
+      <div class="pricing-card">
+        <h3>Monthly</h3>
+        <div class="price-amount">
+          <span class="currency-symbol" data-usd="$" data-inr="₹">$</span>
+          <span class="amount" data-usd="9.99" data-inr="99">9.99</span>
+          <span class="period">/month</span>
+        </div>
+        <a href="#download" class="btn btn-outline btn-block">Start Free Trial</a>
+      </div>
+
+      <!-- Annual Plan -->
+      <div class="pricing-card highlighted">
+        <div class="popular-badge">Most Popular</div>
+        <h3>Annual</h3>
+        <div class="price-amount">
+          <span class="currency-symbol" data-usd="$" data-inr="₹">$</span>
+          <span class="amount" data-usd="99" data-inr="999">99</span>
+          <span class="period">/year</span>
+        </div>
+        <a href="#download" class="btn btn-primary btn-block">Start Free Trial</a>
+      </div>
+
+      <!-- Lifetime Plan -->
+      <div class="pricing-card">
+        <h3>Lifetime</h3>
+        <div class="price-amount">
+          <span class="currency-symbol" data-usd="$" data-inr="₹">$</span>
+          <span class="amount" data-usd="199" data-inr="1,999">199</span>
+          <span class="period"> one-time</span>
+        </div>
+        <a href="#download" class="btn btn-outline btn-block">Start Free Trial</a>
+      </div>
+    </div>
+
+    <div class="schools-pricing text-center">
+      <h3>For Schools &amp; Districts</h3>
+      <p>Lifetime licenses are available through Apple's Volume Purchase Program (VPP) with 50% off for 20 or more licenses. We also support purchase orders and institutional invoicing.</p>
+      <a href="https://samartya.com/for-schools" class="btn btn-secondary">See school pricing and request a trial</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pricing-header {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .pricing-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-8);
+  }
+
+  /* Toggle Switch */
+  .currency-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4);
+  }
+
+  .toggle-label {
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: var(--transition-base);
+  }
+
+  .toggle-label.active {
+    color: var(--color-text-main);
+    font-weight: 700;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-primary);
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: var(--color-primary-dark);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--color-primary-dark);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-16);
+  }
+
+  .pricing-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-8);
+    text-align: center;
+    transition: var(--transition-base);
+    position: relative;
+  }
+
+  .pricing-card.highlighted {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+    transform: scale(1.05);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-1) var(--spacing-4);
+    border-radius: var(--border-radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .price-amount {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .currency-symbol {
+    font-size: 1.5rem;
+    font-weight: 600;
+    vertical-align: top;
+  }
+
+  .amount {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--font-family-heading);
+    line-height: 1;
+  }
+
+  .period {
+    color: var(--color-text-muted);
+  }
+
+  .schools-pricing {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .schools-pricing h3 {
+    margin-bottom: var(--spacing-2);
+  }
+
+  .schools-pricing p {
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-8);
+    }
+    .pricing-card.highlighted {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // Simple toggle script for USD / INR
+  const toggle = document.getElementById('currency-switch') as HTMLInputElement;
+  const labelUsd = document.getElementById('label-usd');
+  const labelInr = document.getElementById('label-inr');
+  const symbols = document.querySelectorAll('.currency-symbol');
+  const amounts = document.querySelectorAll('.amount');
+
+  if (toggle && labelUsd && labelInr) {
+    // Initial State
+    labelUsd.classList.add('active');
+
+    toggle.addEventListener('change', (e) => {
+      const isChecked = (e.target as HTMLInputElement).checked;
+      
+      if (isChecked) {
+        labelUsd.classList.remove('active');
+        labelInr.classList.add('active');
+        // Switch to INR
+        symbols.forEach(el => { el.textContent = el.getAttribute('data-inr'); });
+        amounts.forEach(el => { el.textContent = el.getAttribute('data-inr'); });
+      } else {
+        labelInr.classList.remove('active');
+        labelUsd.classList.add('active');
+        // Switch to USD
+        symbols.forEach(el => { el.textContent = el.getAttribute('data-usd'); });
+        amounts.forEach(el => { el.textContent = el.getAttribute('data-usd'); });
+      }
+    });
+  }
+</script>

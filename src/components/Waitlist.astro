@@ -1,0 +1,189 @@
+---
+// Waitlist.astro
+---
+<section id="waitlist" class="waitlist section section-light">
+  <div class="container waitlist-container">
+    <h2>Coming soon: Dyslexia Reader in your browser.</h2>
+    <p class="waitlist-desc">
+      No app install. No device restrictions. Soon, you'll be able to upload a PDF and try the full Dyslexia Reader experience from any browser — on a Chromebook, a laptop, a tablet, anything.
+    </p>
+    <p class="waitlist-desc">
+      Perfect for teachers who want to evaluate it for their classroom without going through an app install process. Perfect for parents who want to try it right now.
+    </p>
+
+    <div class="form-wrapper">
+      <form id="dr-waitlist-form" class="waitlist-form">
+        <input 
+          type="email" 
+          id="waitlist-email" 
+          placeholder="Enter your email address" 
+          required 
+          aria-label="Email Address"
+        />
+        <button type="submit" class="btn btn-primary" id="waitlist-submit">Notify Me When It Launches</button>
+      </form>
+      <p class="form-status" id="waitlist-status" style="display: none;"></p>
+      <p class="micro-text text-center">We'll email you once — when it's ready. No spam.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .waitlist-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .waitlist-desc {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .form-wrapper {
+    background-color: var(--color-bg-alt);
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-lg);
+    margin-top: var(--spacing-8);
+  }
+
+  .waitlist-form {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .waitlist-form input {
+    flex-grow: 1;
+    padding: var(--spacing-3) var(--spacing-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-full);
+    font-family: var(--font-family-body);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition-base);
+  }
+
+  .waitlist-form input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+  }
+
+  .form-status {
+    margin-bottom: var(--spacing-4);
+    font-weight: 500;
+  }
+
+  .status-success {
+    color: #10B981; /* Emerald 500 */
+  }
+
+  .status-error {
+    color: #EF4444; /* Red 500 */
+  }
+
+  .micro-text {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .waitlist-form {
+      flex-direction: column;
+    }
+    .waitlist-form .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // ── Kit Configuration ─────────────────────────────────────────────────────
+  const KIT_API_KEY = "kit_1e21bc29479493e270ff52fe004f8190";
+  // DR Web Waitlist form on kit.com
+  const KIT_FORM_ID = "9359896";
+
+  const form = document.getElementById('dr-waitlist-form') as HTMLFormElement;
+  const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
+  const submitButton = document.getElementById('waitlist-submit') as HTMLButtonElement;
+  const statusMessage = document.getElementById('waitlist-status') as HTMLParagraphElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Update UI to loading state
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Submitting...';
+      submitButton.disabled = true;
+      emailInput.disabled = true;
+      statusMessage.style.display = 'none';
+
+      try {
+        // Step 1: Create or update subscriber using Kit v4 API
+        const subRes = await fetch("https://api.kit.com/v4/subscribers", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Kit-Api-Key": KIT_API_KEY,
+          },
+          body: JSON.stringify({
+            email_address: email,
+          }),
+        });
+
+        if (!subRes.ok) {
+          throw new Error("Failed to add subscriber");
+        }
+
+        const subData = await subRes.json();
+        
+        // Step 2: Add subscriber to the specific form
+        if (subData.subscriber && subData.subscriber.id) {
+          const formRes = await fetch(
+            `https://api.kit.com/v4/forms/${KIT_FORM_ID}/subscribers/${subData.subscriber.id}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-Kit-Api-Key": KIT_API_KEY,
+              },
+            }
+          );
+          
+          if (!formRes.ok) {
+            throw new Error("Failed to add to form");
+          }
+        }
+
+        // Success state
+        form.style.display = 'none';
+        statusMessage.textContent = "You're on the list! We'll email you when it's ready.";
+        statusMessage.className = "form-status status-success text-center";
+        statusMessage.style.display = 'block';
+        
+      } catch (error) {
+        console.error("Kit API Error:", error);
+        
+        // Error state
+        statusMessage.textContent = "Oops! Something went wrong. Please try again later.";
+        statusMessage.className = "form-status status-error text-center";
+        statusMessage.style.display = 'block';
+        
+        // Reset form
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+        emailInput.disabled = false;
+      }
+    });
+  }
+</script>

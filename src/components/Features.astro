@@ -1,0 +1,120 @@
+---
+// Features.astro
+const featureGroups = [
+  {
+    category: "Reading & Comprehension",
+    features: [
+      { icon: "📖", title: "Text-to-Speech", text: "High-quality voices read any page aloud, highlighting each word as it's spoken." },
+      { icon: "🔍", title: "Dictionary", text: "Instant definitions for any word, right inside the reading experience." },
+      { icon: "🎯", title: "Focus Tools", text: "Screen masking highlights one line at a time. A tracking pointer supports hand-eye coordination." },
+      { icon: "📄", title: "Flexible Viewing", text: "Switch between seeing the whole page, one sentence, or one word at a time." }
+    ]
+  },
+  {
+    category: "Phonological Awareness",
+    features: [
+      { icon: "✂️", title: "Syllabification", text: "Tap any word to break it into syllables — the same strategy dyslexia specialists teach." },
+      { icon: "🔤", title: "Onset & Rime", text: "See how words are built from their beginning sounds and ending patterns." },
+      { icon: "🔗", title: "Word Families", text: "Discover related words that share the same rime. \"Cat\" connects to \"bat,\" \"hat,\" \"sat.\"" },
+      { icon: "📝", title: "Sentence Building", text: "Practice constructing sentences with words from the passage, reinforcing comprehension." }
+    ]
+  },
+  {
+    category: "Accessibility & Convenience",
+    features: [
+      { icon: "🎨", title: "Visual Customization", text: "Dyslexia-friendly fonts. Adjustable text size. Colored overlays for Irlen Syndrome. Dark mode." },
+      { icon: "☁️", title: "Cloud Library", text: "Save and organize materials. Teachers can prepare assignments and share them with students." },
+      { icon: "📱", title: "Works Offline", text: "No internet needed after download. Read anywhere." }
+    ]
+  }
+];
+---
+<section class="features section section-light">
+  <div class="container">
+    <h2 class="text-center section-title">Everything your child needs to read with confidence.</h2>
+    
+    <div class="features-container">
+      {featureGroups.map(group => (
+        <div class="feature-group">
+          <h3 class="group-title">{group.category}</h3>
+          <div class="features-grid">
+            {group.features.map(f => (
+              <div class="feature-card">
+                <div class="feature-icon">{f.icon}</div>
+                <div class="feature-content">
+                  <h4>{f.title}</h4>
+                  <p>{f.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    margin-bottom: var(--spacing-16);
+  }
+
+  .features-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+  }
+
+  .group-title {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-6);
+    border-bottom: 2px solid var(--color-primary-light);
+    padding-bottom: var(--spacing-2);
+    display: inline-block;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+
+  .feature-card {
+    display: flex;
+    gap: var(--spacing-4);
+    background: var(--color-bg-base);
+    padding: var(--spacing-6);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-base);
+  }
+  
+  .feature-card:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--color-primary-light);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .feature-content h4 {
+    margin-bottom: var(--spacing-2);
+    font-size: 1.125rem;
+  }
+
+  .feature-content p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

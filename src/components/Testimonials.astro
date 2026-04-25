@@ -1,0 +1,88 @@
+---
+// Testimonials.astro
+const testimonials = [
+  {
+    quote: "The supports are exactly what we teach in remediation — syllabification, onset/rime — but available instantly for any text the child encounters. It bridges the gap between therapy and real-world reading.",
+    author: "Reading Specialist"
+  },
+  {
+    quote: "Homework used to be a frustrating battle. Now, my son scans the page, uses the support tools independently, and completes his assignments with confidence. Dyslexia Reader has given him the autonomy he needed to succeed.",
+    author: "Parent"
+  },
+  {
+    quote: "We use it across our resource rooms. Teachers prepare the week's reading materials on Sunday night and share them with all their students. The consistency has been remarkable.",
+    author: "Special Education Coordinator"
+  }
+];
+---
+<section class="testimonials section">
+  <div class="container">
+    <h2 class="text-center section-title">What educators and families say.</h2>
+    
+    <div class="testimonials-grid">
+      {testimonials.map(t => (
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">{t.quote}</p>
+          <p class="quote-author">&mdash; {t.author}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    margin-bottom: var(--spacing-16);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-8);
+  }
+
+  .testimonial-card {
+    background: var(--color-bg-surface);
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-mark {
+    font-family: var(--font-family-heading);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-primary-light);
+    position: absolute;
+    top: var(--spacing-4);
+    left: var(--spacing-6);
+  }
+
+  .quote-text {
+    font-size: 1.05rem;
+    color: var(--color-text-main);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .quote-author {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

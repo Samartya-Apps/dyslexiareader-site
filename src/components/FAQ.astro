@@ -1,0 +1,164 @@
+---
+// FAQ.astro
+const faqs = [
+  {
+    q: "What devices does Dyslexia Reader work on?",
+    a: "Dyslexia Reader is available on iPad and iPhone (iOS), Android tablets and phones, and soon on any web browser. The web version works on Chromebooks, laptops, and desktops."
+  },
+  {
+    q: "Does my child need an internet connection?",
+    a: "The iOS and Android apps work offline after download. The web version requires an internet connection."
+  },
+  {
+    q: "Can I use my child's actual school textbooks?",
+    a: "Yes — that's what Dyslexia Reader is designed for. Scan a physical page with your camera or upload a PDF. The app digitizes the text and makes it accessible."
+  },
+  {
+    q: "Is this just text-to-speech?",
+    a: "No. Text-to-speech is one of many features. Dyslexia Reader also provides syllabification, onset/rime analysis, word families, dictionary, sentence building, focus tools, and visual customization — all evidence-based reading strategies developed with the Madras Dyslexia Association."
+  },
+  {
+    q: "Can teachers share materials with students?",
+    a: "Yes. Teachers can prepare reading materials in the app and share them with students via the cloud library. Students receive the prepared material ready to read with all supports available."
+  },
+  {
+    q: "How much does it cost?",
+    a: "Free to download and try for 14 days. Plans start at $9.99/month, with annual ($99/year) and lifetime ($199) options. Schools get 50% off lifetime licenses through Apple VPP for 20+ licenses."
+  },
+  {
+    q: "Who built this?",
+    a: "Dyslexia Reader was co-developed by Samartya Apps and the Madras Dyslexia Association (MDA), a non-profit with 30+ years of experience in dyslexia education and remediation. <a href='https://samartya.com/about'>Learn more &rarr;</a>"
+  },
+  {
+    q: "Is it safe for children?",
+    a: "Yes. Dyslexia Reader is designed for use by children and is compliant with COPPA (Children's Online Privacy Protection Act) and FERPA (Family Educational Rights and Privacy Act). <a href='https://samartya.com/privacy'>See our privacy policy &rarr;</a>"
+  }
+];
+---
+<section class="faq section">
+  <div class="container faq-container">
+    <h2 class="text-center section-title">Common questions.</h2>
+    
+    <div class="faq-list">
+      {faqs.map((faq) => (
+        <details class="faq-item">
+          <summary class="faq-question">
+            {faq.q}
+            <span class="faq-icon"></span>
+          </summary>
+          <div class="faq-answer" set:html={faq.a}></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .faq-item {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: var(--transition-base);
+  }
+
+  .faq-item:hover {
+    border-color: var(--color-primary-light);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-4) var(--spacing-6);
+    font-weight: 600;
+    font-size: 1.125rem;
+    cursor: pointer;
+    list-style: none; /* Hide default arrow */
+    color: var(--color-text-main);
+  }
+
+  /* Hide default details marker for webkit */
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-primary);
+    transition: transform 0.3s ease;
+  }
+
+  /* Horizontal line */
+  .faq-icon::before {
+    width: 16px;
+    height: 2px;
+  }
+
+  /* Vertical line */
+  .faq-icon::after {
+    width: 2px;
+    height: 16px;
+  }
+
+  /* Turn plus into minus when open */
+  details[open] .faq-icon::after {
+    transform: rotate(90deg);
+  }
+
+  .faq-answer {
+    padding: 0 var(--spacing-6) var(--spacing-6);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+  
+  .faq-answer :global(a) {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+  
+  .faq-answer :global(a:hover) {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  // Optional: Make details accordion behave exclusively (only one open at a time)
+  const details = document.querySelectorAll('details');
+  details.forEach((targetDetail) => {
+    targetDetail.addEventListener('click', () => {
+      details.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.removeAttribute('open');
+        }
+      });
+    });
+  });
+</script>
