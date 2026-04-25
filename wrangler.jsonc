@@ -1,7 +1,7 @@
 {
 	"compatibility_date": "2026-04-25",
 	"compatibility_flags": ["global_fetch_strictly_public"],
-	"name": "temp",
+	"name": "dyslexiareader-site",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
 		"directory": "./dist",
@@ -9,5 +9,9 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"routes": [
+		{ "pattern": "dyslexiareader.com", "custom_domain": true },
+		{ "pattern": "www.dyslexiareader.com", "custom_domain": true }
+	]
 }
